@@ -2,7 +2,7 @@
   "description": "Modify Headers Plus - Chrome extension to modify HTTP headers",
   "manifest_version": 3,
   "name": "Modify Headers Plus",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "default_locale": "en",
   "homepage_url": "https://github.com/Andersoonalves/ModifyHeadersPlus",
   "icons": {

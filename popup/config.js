@@ -1166,6 +1166,7 @@ function addNewRule() {
     config.headers.push(newRule);
     renderRules();
     updateBadges();
+    scheduleAutoSave();
 
     // Focus the new rule's header name input
     setTimeout(() => {
@@ -1382,7 +1383,7 @@ function saveData() {
 }
 
 function syncAllRowsToConfig() {
-    document.querySelectorAll('#global_rules_tab tr, #group_rules_tab tr').forEach(tr => {
+    document.querySelectorAll('#global_rules_tab tr, #group_rules_tab tr, #all_groups_sections tbody[id^="group_tab_"] tr').forEach(tr => {
         let ruleId = tr.dataset.ruleId;
         if (ruleId) updateRuleFromRow(ruleId, tr);
     });
