@@ -48,9 +48,13 @@ function initConfigurationPage() {
             if (useManifestV3) config = removeCookiesActionFromConfig(config);
         }
 
-        // Init counters
-        groupIdCounter = config.groups ? config.groups.length + 1 : 1;
-        ruleIdCounter = config.headers.length + 1;
+        // Init counters — use max existing id number to avoid duplicates after deletions
+        groupIdCounter = config.groups && config.groups.length > 0
+            ? Math.max(...config.groups.map(g => parseInt(g.id.replace('group_', '')) || 0)) + 1
+            : 1;
+        ruleIdCounter = config.headers.length > 0
+            ? Math.max(...config.headers.map(h => parseInt(h.id.replace('rule_', '')) || 0)) + 1
+            : 1;
 
         // Load settings
         if (config.debug_mode) {
